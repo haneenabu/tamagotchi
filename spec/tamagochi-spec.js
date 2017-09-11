@@ -3,8 +3,6 @@ describe('FeedPet', function() {
   let pet = new Pet("Pierre");
   beforeEach(function() {
     jasmine.clock().install();
-    // pet.foodLevel = 10;
-    // pet.name= "Pierre";
     pet.setHunger();
   });
   afterEach(function () {
