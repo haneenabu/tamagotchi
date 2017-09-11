@@ -70,9 +70,9 @@ export class Pet{
     let test;
     const someInterval = setInterval(()=>{
       if(this.foodLevel >= 0){
-        // console.log(this.foodLevel);
+        console.log(this.foodLevel);
         test =  this.foodLevel;
-        return test;
+        return $('.seconds').text(test);
       }
     }, 1001);
   }
