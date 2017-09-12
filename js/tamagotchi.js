@@ -51,14 +51,14 @@ export class Pet{
     this.happyLevel = 10;
   }
 
-  interval(){
+  interval(showResults){
     const timer = setInterval(() => {
       let gameOver = this.didYouGetEaten();
       let gameOver1 = this.didYouGetPlay();
       let gameOver2 = this.didYouGetSleep();
       if (gameOver === true || gameOver1 === true || gameOver2 === true){
         clearInterval(timer);
-        alert ("Game Over! Your pet died");
+        showResults("Game over!");
         return("Game Over! Your pet died");
       }
     }, 10001);
