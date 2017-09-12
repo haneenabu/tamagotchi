@@ -10,7 +10,7 @@ $(function(){
   let hunger = pet.setHunger();
   let tired = pet.setSleep();
   let happy = pet.setPlay();
-  let interval = pet.interval(showResults);
+  let interval = pet.interval();
   let foodInterval = pet.foodInterval();
   let sleepInterval = pet.sleepInterval();
   let playInterval = pet.playInterval();
@@ -31,9 +31,7 @@ $(function(){
   //   $("#imageplace").attr('src',response.data[0].images.original.url);
   // };
   //
-var showResults= function(message){
-  alert(message);
-}
+
   let promise = new Promise(function(resolve, reject){
     let request = new XMLHttpRequest();
     let url='https://api.giphy.com/v1/gifs/search?api_key=b81addf496fc43258eaaba5e550debda&q=tamagotchi&limit=25&offset=0&rating=G&lang=en';
