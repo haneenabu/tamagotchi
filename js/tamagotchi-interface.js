@@ -15,23 +15,42 @@ $(function(){
   let sleepInterval = pet.sleepInterval();
   let playInterval = pet.playInterval();
 
-  let request = new XMLHttpRequest();
-  let randpregerg = 'https://api.giphy.com/v1/gifs/search?api_key=b81addf496fc43258eaaba5e550debda&q=tamagotchi&limit=25&offset=0&rating=G&lang=en';
+  // let request = new XMLHttpRequest();
+  // let randpregerg = 'https://api.giphy.com/v1/gifs/search?api_key=b81addf496fc43258eaaba5e550debda&q=tamagotchi&limit=25&offset=0&rating=G&lang=en';
+  //
+  // request.onreadystatechange = function() {
+  //   if (this.readyState === 4 && this.status === 200){
+  //     let response = JSON.parse(this.responseText);
+  //     getElements(response);
+  //   }
+  // };
+  // request.open("GET", randpregerg, true);
+  // request.send();
+  //
+  // function getElements(response){
+  //   $("#imageplace").attr('src',response.data[0].images.original.url);
+  // };
+  //
 
-  request.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200){
-      let response = JSON.parse(this.responseText);
-      getElements(response);
+  let promise = new Promise(function(resolve, reject){
+    let request = new XMLHttpRequest();
+    let url='https://api.giphy.com/v1/gifs/search?api_key=b81addf496fc43258eaaba5e550debda&q=tamagotchi&limit=25&offset=0&rating=G&lang=en';
+    request.onload = function() {
+      if(this.status === 200){
+        resolve(request.response);
+      } else {
+        reject(Erorr(request.statusText));
+      }
     }
-  };
-  request.open("GET", randpregerg, true);
-  request.send();
-
-  function getElements(response){
-    $("#imageplace").attr('src',response.data[0].images.original.url);
-  };
-
-
+    request.open("GET", url, true);
+    request.send();
+  });
+  promise.then(function(response){
+    const body = JSON.parse(response);
+    $("#imageplace").attr('src', body.data[0].images.original.url);
+  }, function(error){
+    $('.showErrors').text(`There was an error processing your request: ${error.responseText}. Please try again.`);
+  })
 
 
 
