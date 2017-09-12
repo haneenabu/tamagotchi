@@ -1,4 +1,5 @@
 import {Pet} from './../js/tamagotchi.js';
+var apiKey = require('./../.env').apiKey;
 // import {Clock} from './../js/clock.js';
 // let Clock = require("./../js/clock.js").clockModule;
 
@@ -11,7 +12,26 @@ $(function(){
   let happy = pet.setPlay();
   let interval = pet.interval();
   let foodInterval = pet.foodInterval();
-  console.log(pet.foodInterval());
+
+  let request = new XMLHttpRequest();
+  let randpregerg = 'https://api.giphy.com/v1/gifs/trending?api_key=b81addf496fc43258eaaba5e550debda&limit=1&rating=G';
+
+  request.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200){
+      let response = JSON.parse(this.responseText);
+      getElements(response);
+    }
+  };
+  request.open("GET", randpregerg, true);
+  request.send();
+
+  function getElements(response){
+    console.log(response.data[0].id)
+    $("#imageplace").attr('src',response.data[0].images.original.url);
+  };
+
+
+
 
 
   $("#tamagotchiFeed").submit(function(event) {
@@ -21,6 +41,8 @@ $(function(){
     // console.log('pet foodLevel is: '+ pet.foodLevel);
     pet.feed();
   });
+
+
   $("#tamagotchiPlay").submit(function(event){
     event.preventDefault();
     pet.play();
@@ -30,6 +52,6 @@ $(function(){
     pet.sleep();
   });
 
-
-
 });
+
+// });
