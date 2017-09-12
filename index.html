@@ -9,7 +9,7 @@
     <title>Tamagotchi</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <div class="jumbotron">
         <h1>Tamagotchi</h1>
       </div>
@@ -37,11 +37,22 @@
           </div>
         </div>
       </div>
-      <h1>Countdown Clock</h1>
-      <div id="clockdiv">
-        <div>
-          <span class="seconds"></span>
-          <div class="smalltext">Seconds</div>
+
+      <h1>Pet Level</h1>
+      <div class="row">
+        <div id="clockdiv">
+          <div class="col-md-3">
+            <span class="seconds"></span>
+            <div class="smalltext">Food Level</div>
+          </div>
+          <div class="col-md-3">
+            <span class="sleep"></span>
+            <div class="smalltext">Sleep Level</div>
+          </div>
+          <div class="col-md-3">
+            <span class="play"></span>
+            <div class="smalltext">Play Level</div>
+          </div>
         </div>
       </div>
       <div id="gif">

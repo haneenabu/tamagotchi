@@ -13,12 +13,13 @@
 #clockdiv{
 	font-family: sans-serif;
 	color: #fff;
-	display: inline-block;
+	display: block;
 	font-weight: 100;
 	text-align: center;
 	font-size: 30px;
   text-align: center;
   margin: auto;
+  margin-left: 15%;
 }
 
 #clockdiv > div{
@@ -38,4 +39,18 @@
 .smalltext{
 	padding-top: 5px;
 	font-size: 16px;
+}
+img {
+  display: block;
+  margin:auto;
+}
+h1 {
+  text-align: center;
+}
+.col-md-3 {
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-left: 20px;
+  padding: 10px
 }

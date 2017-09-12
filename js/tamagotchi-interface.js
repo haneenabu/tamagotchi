@@ -12,9 +12,11 @@ $(function(){
   let happy = pet.setPlay();
   let interval = pet.interval();
   let foodInterval = pet.foodInterval();
+  let sleepInterval = pet.sleepInterval();
+  let playInterval = pet.playInterval();
 
   let request = new XMLHttpRequest();
-  let randpregerg = 'https://api.giphy.com/v1/gifs/trending?api_key=b81addf496fc43258eaaba5e550debda&limit=1&rating=G';
+  let randpregerg = 'https://api.giphy.com/v1/gifs/search?api_key=b81addf496fc43258eaaba5e550debda&q=tamagotchi&limit=25&offset=0&rating=G&lang=en';
 
   request.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200){
@@ -26,7 +28,6 @@ $(function(){
   request.send();
 
   function getElements(response){
-    console.log(response.data[0].id)
     $("#imageplace").attr('src',response.data[0].images.original.url);
   };
 
@@ -45,10 +46,12 @@ $(function(){
 
   $("#tamagotchiPlay").submit(function(event){
     event.preventDefault();
+    $('.sleep').text(sleepInterval);
     pet.play();
   });
   $("#tamagotchiSleep").submit(function(event){
     event.preventDefault();
+    $('.play').text(playInterval);
     pet.sleep();
   });
 

@@ -53,15 +53,12 @@ export class Pet{
 
   interval(){
     const timer = setInterval(() => {
-      // console.log(this.foodLevel);
-      // console.log(this.happyLevel);
-      // console.log(this.sleepLevel);
       let gameOver = this.didYouGetEaten();
       let gameOver1 = this.didYouGetPlay();
       let gameOver2 = this.didYouGetSleep();
       if (gameOver === true || gameOver1 === true || gameOver2 === true){
         clearInterval(timer);
-        // alert ("Game Over! Your pet died");
+        alert ("Game Over! Your pet died");
         return("Game Over! Your pet died");
       }
     }, 10001);
@@ -76,7 +73,24 @@ export class Pet{
       }
     }, 1001);
   }
-  newInterval(){
-    return this.foodInterval;
+  sleepInterval(){
+    let test;
+    const sleepInterval = setInterval(()=>{
+      if(this.sleepLevel >= 0){
+        console.log(this.sleepLevel);
+        test =  this.sleepLevel;
+        return $('.sleep').text(test);
+      }
+    }, 1001);
+  }
+  playInterval(){
+    let test;
+    const playInterval = setInterval(()=>{
+      if(this.happyLevel >= 0){
+        console.log(this.happyLevel);
+        test =  this.happyLevel;
+        return $('.play').text(test);
+      }
+    }, 1001);
   }
 }
